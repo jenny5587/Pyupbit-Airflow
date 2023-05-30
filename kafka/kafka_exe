@@ -1,0 +1,32 @@
+# EC2 카프카 실행
+1 chmod 400 your.pem
+2 ssh -i "your.pem.pem" ubuntu@{aws ec2 public ip}
+3 sudo yum install -y java-1.8.0-openjdk-devel.x86_64
+4 vi config/server.properties
+5 listeners=PLAINTEXT://:9092
+6 advertised.listeners=PLAINTEXT://{aws ec2 public ip}:9092
+7 bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+8 bin/kafka-server-start.sh -daemon config/server.properties
+
+# 로그 확인
+tail -f logs/*
+
+#토픽 생성 
+./kafka-topics.sh --create --bootstrap-server {aws ec2 public ip}:9092 --replication-factor 1 --partitions 3 --topic test
+
+# 프로듀서 보냈는지 확인
+./kafka-console-producer.sh --bootstrap-server {aws ec2 public ip}:9092 --topic test
+
+# 컨슈머 토픽확인
+./kafka-console-consumer.sh --bootstrap-server {aws ec2 public ip}:9092 --topic test --from-beginning
+
+# 컨슈머 리스트 확인
+./kafka-consumer-groups.sh --bootstrap-server {aws ec2 public ip}:9092 --list
+./kafka-consumer-groups.sh --bootstrap-server {aws ec2 public ip}:9092 --group testgroup --describe
+./kafka-consumer-groups.sh --bootstrap-server {aws ec2 public ip}:9092 --group testgroup --topic test --reset-offsets --to-earliest --execute
+
+#consumer 아직 전
+./kafka-console-consumer.sh --bootstrap-server {aws ec2 public ip}:9092 --topic test --property print.key=true --property key.separator="-"
+
+# 카프카 활용 실습 토픽 데이터 확인
+./kafka-console-consumer.sh --bootstrap-server {aws ec2 public ip}:9092 --topic testdata --from-beginning
