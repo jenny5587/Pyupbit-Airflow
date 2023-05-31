@@ -1,3 +1,5 @@
+![image](https://github.com/jenny5587/TIL/assets/103649749/4fcbea98-e92f-41d3-af17-b32af8364d2f)
+
 ## Kafka
 Kafka는 Apache Software Foundation에서 개발한 오픈 소스 분산 이벤트 스트리밍 플랫폼입니다. 
 Kafka는 확장성이 뛰어나도록 설계되었으며 많은 양의 데이터와 높은 메시지 처리량을 처리할 수 있습니다. 여러 서버에 주제와 파티션을 분산하여 이러한 확장성을 달성하여 병렬 처리 및 수평적 확장성을 허용합니다.
