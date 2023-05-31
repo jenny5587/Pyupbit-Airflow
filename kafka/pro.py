@@ -28,6 +28,6 @@ for _, row in df.iterrows():
         "Rings": row["Rings"]
     }
 
-    producer.send(abalone_topic, value=message)
+    producer.send(abalone_topic, value=message) #토픽 보낸다
 
 producer.flush() # 비우는 작업.
