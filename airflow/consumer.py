@@ -1,5 +1,5 @@
 from kafka import KafkaConsumer
-from json import loads #읽어오는 함수
+from json import loads
 import time
 import datetime
 import mysql.connector
