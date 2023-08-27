@@ -24,6 +24,7 @@ dag = DAG(
     schedule=timedelta(minutes=5), 
     start_date=datetime(2023, 8, 26),
 )
+# schedule_interval = @daily , @hourly
 
 # Define the PythonOperators
 task1_operator = PythonOperator(
