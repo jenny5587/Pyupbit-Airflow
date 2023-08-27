@@ -7,7 +7,7 @@ from numpy import nan
 import os
 from dotenv import load_dotenv
 
-# load .env
+# env 사용
 load_dotenv()
 
 def data_collect():
