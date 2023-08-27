@@ -28,7 +28,7 @@ def producer():
                         bootstrap_servers = [server]
                         , api_version=(0, 10, 2)
                     )
-    # api_version=(0, 10, 2)는 Kafka 0.10.2 버전과 호환되는 API를 사용하겠다
+    # api_version=(0, 10, 2)는 Kafka 0.10.2 버전과 호환되는 API를 사용함
 
     print("Start Insert data to Kafka")
     for i in range(len(df)):
